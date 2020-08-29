@@ -1,7 +1,5 @@
 package com.woody.ddd.blogcleanarchitechture.domain.contexts.blog;
 
-import org.apache.ibatis.javassist.NotFoundException;
-
 public class BlogService {
     private final BlogRepository blogRepository;
 
@@ -11,5 +9,9 @@ public class BlogService {
 
     public Blog findById(String id) {
         return blogRepository.findById(id).orElseThrow(() -> new BlogNotFoundException(""));
+    }
+
+    public Blog create(String title, String content) {
+        return blogRepository.save(new Blog(title, content));
     }
 }

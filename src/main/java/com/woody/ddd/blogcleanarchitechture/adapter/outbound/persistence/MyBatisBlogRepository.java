@@ -12,4 +12,9 @@ public class MyBatisBlogRepository implements BlogRepository {
     public Optional<Blog> findById(String id) {
         return Optional.of(new Blog("title", "content"));
     }
+
+    @Override
+    public Blog save(Blog blog) {
+        return new Blog("title", "content");
+    }
 }

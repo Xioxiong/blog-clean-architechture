@@ -4,4 +4,6 @@ import java.util.Optional;
 
 public interface BlogRepository {
     Optional<Blog> findById(String id);
+
+    Blog save(Blog blog);
 }
