@@ -1,5 +1,6 @@
 package com.woody.ddd.blogcleanarchitechture.domain.contexts.blog;
 
+import com.woody.ddd.blogcleanarchitechture.domain.core.concepts.AggregateRoot;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,7 +8,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @Getter
-public class Blog {
+public class Blog implements AggregateRoot {
     private final String id;
     private String title;
     private String content;
