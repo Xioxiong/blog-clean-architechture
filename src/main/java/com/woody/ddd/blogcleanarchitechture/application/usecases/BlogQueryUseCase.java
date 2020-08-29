@@ -6,7 +6,7 @@ import com.woody.ddd.blogcleanarchitechture.domain.contexts.blog.BlogService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BlogQueryUseCase {
+public class BlogQueryUseCase implements UseCase {
     private final BlogService blogService;
 
     public BlogQueryUseCase(BlogRepository blogRepository) {
