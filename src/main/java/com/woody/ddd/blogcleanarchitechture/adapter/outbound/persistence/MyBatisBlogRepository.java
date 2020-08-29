@@ -8,19 +8,28 @@ import java.util.Optional;
 
 @Repository
 public class MyBatisBlogRepository implements BlogRepository {
-    private final BlogMapper BlogMapper;
+    private final BlogMapper blogMapper;
 
-    public MyBatisBlogRepository(com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence.BlogMapper blogMapper) {
-        this.BlogMapper = blogMapper;
+    public MyBatisBlogRepository(BlogMapper blogMapper) {
+        this.blogMapper = blogMapper;
     }
 
     @Override
     public Optional<Blog> findById(String id) {
-        return BlogMapper.findById(id);
+        return blogMapper.findById(id).map(BlogPO::toDomainModel);
     }
 
     @Override
     public Blog save(Blog blog) {
-        return new Blog("title", "content");
+        BlogPO blogPO = BlogPO.of(blog);
+
+        Optional<BlogPO> existingBlog = blogMapper.findById(blog.getId());
+
+        if (existingBlog.isPresent()) {
+            blogMapper.update(blogPO);
+        } else {
+            blogMapper.insert(blogPO);
+        }
+        return blog;
     }
 }

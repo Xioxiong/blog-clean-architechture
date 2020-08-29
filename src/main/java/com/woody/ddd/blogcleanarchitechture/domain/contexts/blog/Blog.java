@@ -1,9 +1,11 @@
 package com.woody.ddd.blogcleanarchitechture.domain.contexts.blog;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.UUID;
 
+@AllArgsConstructor
 @Getter
 public class Blog {
     private final String id;
