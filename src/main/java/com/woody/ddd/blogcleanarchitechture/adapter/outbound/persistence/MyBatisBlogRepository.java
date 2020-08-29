@@ -8,9 +8,15 @@ import java.util.Optional;
 
 @Repository
 public class MyBatisBlogRepository implements BlogRepository {
+    private final BlogMapper BlogMapper;
+
+    public MyBatisBlogRepository(com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence.BlogMapper blogMapper) {
+        this.BlogMapper = blogMapper;
+    }
+
     @Override
     public Optional<Blog> findById(String id) {
-        return Optional.of(new Blog("title", "content"));
+        return BlogMapper.findById(id);
     }
 
     @Override
