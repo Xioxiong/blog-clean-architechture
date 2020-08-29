@@ -1,5 +1,6 @@
 package com.woody.ddd.blogcleanarchitechture.adapter.inbound.rest.blog;
 
+import com.woody.ddd.blogcleanarchitechture.domain.contexts.blog.Blog;
 import lombok.Data;
 
 @Data
@@ -12,5 +13,9 @@ public class BlogResponse {
         this.id = id;
         this.title = title;
         this.content = content;
+    }
+
+    public static BlogResponse of(Blog blog) {
+        return new BlogResponse(blog.getId(), blog.getTitle(), blog.getContent());
     }
 }
