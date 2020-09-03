@@ -1,6 +1,8 @@
 package com.woody.ddd.blogcleanarchitechture.domain.contexts.blog;
 
-public class BlogService {
+import com.woody.ddd.blogcleanarchitechture.domain.core.concepts.DomainService;
+
+public class BlogService implements DomainService {
     private final BlogRepository blogRepository;
 
     public BlogService(BlogRepository blogRepository) {
