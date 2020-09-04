@@ -1,5 +1,6 @@
-package com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence;
+package com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence.blog;
 
+import com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence.PersistenceObject;
 import com.woody.ddd.blogcleanarchitechture.domain.contexts.blog.Blog;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

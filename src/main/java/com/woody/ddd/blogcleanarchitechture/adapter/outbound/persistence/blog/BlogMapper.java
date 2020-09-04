@@ -1,4 +1,4 @@
-package com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence;
+package com.woody.ddd.blogcleanarchitechture.adapter.outbound.persistence.blog;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

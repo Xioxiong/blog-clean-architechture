@@ -9,8 +9,24 @@ public class LoanApplicationService implements DomainService {
         this.repository = repository;
     }
 
-    public LoanApplication create(String applicationNumber, String applicant, Loan loan) {
-        LoanApplication loanApplication = new LoanApplication(applicationNumber, applicant, loan);
+    public LoanApplication apply(String applicantInformation, String supplementalInformation, LoanDetail loanDetail) {
+        LoanApplication loanApplication = new LoanApplication(applicantInformation, supplementalInformation, loanDetail);
+        return repository.save(loanApplication);
+    }
+
+    public LoanApplication findByApplicationNumber(String applicationNumber) {
+        return repository.findByApplicationNumber(applicationNumber)
+            .orElseThrow(() -> new LoanApplicationNotFoundException("Application Number Not Found."));
+    }
+
+    public LoanApplication edit(String applicationNumber, String status) {
+        LoanApplication loanApplication = repository.findByApplicationNumber(applicationNumber)
+            .orElseThrow(() -> new LoanApplicationNotFoundException("Application Number Not Found."));
+        if ("Approved".equals(status)) {
+            loanApplication.approve();
+        } else if ("Rejected".equals(status)) {
+            loanApplication.reject();
+        }
         return repository.save(loanApplication);
     }
 }

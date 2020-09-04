@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class Loan implements ValueObject {
+public class LoanDetail implements ValueObject {
     private final int totalAmount;
     private final double dailyRate;
     private final String type;
